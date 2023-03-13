@@ -1,0 +1,8 @@
+.c-Size {
+    height: 400px;
+}
+
+.i-Size {
+    height: 400px;
+    object-fit: cover;
+}
