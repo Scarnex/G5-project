@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css" />
-        <script src="Vendor/jquery/mobile-data.js"></script>
 
         <!--Bootstrap-->
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -14,22 +13,27 @@
         <script src="vendor/jquery/jquery.min.js"></script>
         <!--Font Awesome-->
         <link href="vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
-        
-        <title>Mobiles</title>
+
+        <title>Reqres data</title>
     </head>
 
     <body>
+        <button id="myButton" class="btn btn-primary">Get Users</button>
+
         <script>
-            //loop through the mobile dictionary from mobile-data.js
-            for (var i = 0; i < mobiles.length; i++) {
-                console.log(mobiles[i].title);
-                console.log(mobiles[i].desc);
-                console.log(mobiles[i].price);
-                
-                document.write("<h2>" + mobiles[i].title + "</h2>" + "<br>");
-                document.write(mobiles[i].desc + "<br>");
-                document.write("<b>" + mobiles[i].price + "</b>" + "<br><br>");
-            }
+            $("#myButton").click(function() {
+                $.ajax({
+                    url: "https://reqres.in/api/users/",
+                    type: "GET",
+                    success: function(response) {
+                        $.each(response.data, function(index, user) {
+                            var avatar = $("<img>").attr("src", user.avatar);
+                            var name = $("<p>").text(user.first_name + " " + user.last_name);
+                            $("body").append(avatar).append(name);
+                        });
+                    }
+                });
+            })
         </script>
     </body>
 </html>
