@@ -23,7 +23,7 @@
         <script>
             $("#myButton").click(function() {
                 $.ajax({
-                    url: "https://reqres.in/api/users/",
+                    url: "https://reqres.in/api/user/5",
                     type: "GET",
                     success: function(response) {
                         $.each(response.data, function(index, user) {
