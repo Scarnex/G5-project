@@ -15,25 +15,25 @@
         <link href="vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
 
         <title>Reqres data</title>
-    </head>
+     </head>
 
-    <body>
-        <button id="myButton" class="btn btn-primary">Get Users</button>
+     <body>
+         <button id="myButton" class="btn btn-primary">Get Users</button>
 
-        <script>
-            $("#myButton").click(function() {
-                $.ajax({
-                    url: "https://reqres.in/api/unknown",
-                    type: "GET",
-                    success: function(response) {
-                        $.each(response.data, function(index, user) {
-                            var avatar = $("<img>").attr("src", user.avatar);
-                            var name = $("<p>").text(user.first_name + " " + user.last_name);
-                            $("body").append(avatar).append(name);
-                        });
-                    }
-                });
-            })
-        </script>
-    </body>
-</html>
+         <script>
+             $("#myButton").click(function() {
+                 $.ajax({
+                     url: "https://reqres.in/api/users/",
+                     type: "GET",
+                     success: function(response) {
+                         $.each(response.data, function(index, user) {
+                             var avatar = $("<img>").attr("src", user.avatar);
+                             var name = $("<p>").text(user.first_name + " " + user.last_name);
+                             $("body").append(avatar).append(name);
+                         });
+                     }
+                 });
+             })
+         </script>
+     </body>
+ </html>
