@@ -6,3 +6,11 @@
     height: 400px;
     object-fit: cover;
 }
+
+.mobileContainer {
+    padding: 50px;
+    margin: 50px;
+    width: 95%;
+    height: 900px;
+    background-color: rgb(211, 252, 255);
+}
