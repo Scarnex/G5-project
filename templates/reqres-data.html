@@ -4,19 +4,18 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="Vendor/jquery/mobile-data.js"></script>
+        <link rel="stylesheet" type="text/css" href="../static/styles.css">
 
         <!--Bootstrap-->
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+        <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!--JQuery-->
-        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="../static/vendor/jquery/jquery.min.js"></script>
         <!--Font Awesome-->
-        <link href="vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
-        
-        <title>Mobiles</title>
-    </head>
+        <link href="../static/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
+
+        <title>Reqres data</title>
+     </head>
 
     <body>
         <header>
@@ -24,14 +23,14 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <!-- Container wrapper -->
                 <div class="container-fluid">
-                  <!-- Navbar brand -->
-                  <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
-                      <h5 class="pt-1">G5</h5>
-                  </a>
-      
-                  <!-- Collapsible wrapper -->
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+                        <h5 class="pt-1">G5</h5>
+                    </a>
+        
+                    <!-- Collapsible wrapper -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <!-- Left links -->
+                        <!-- Left links -->
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
@@ -43,32 +42,44 @@
                                 <a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="reqres-data.html"><i class="fa-solid fa-user"></i> Our Users</a>
+                                <a class="nav-link" href="reqres-data.html" style="color: white"><i class="fa-solid fa-user"></i> Our Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="mobiles.html" style="color: white"><i class="fa-sharp fa-solid fa-mobile"></i> Mobiles</a>
+                                <a class="nav-link" href="mobiles.html"><i class="fa-sharp fa-solid fa-mobile"></i> Mobiles</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-
-        <div class="mobileContainer">
-            <script>
-                //loop through the mobile dictionary from mobile-data.js
-                for (var i = 0; i < mobiles.length; i++) {
-                    console.log(mobiles[i].title);
-                    console.log(mobiles[i].desc);
-                    console.log(mobiles[i].price);
-                    
-                    document.write("<h2>" + mobiles[i].title + "</h2>" + "<br>");
-                    document.write(mobiles[i].desc + "<br>");
-                    document.write("<b>" + mobiles[i].price + "</b>" + "<br><br>");
-                }
-            </script>
+        
+        <div id='users' class='container'>
+            <div class='row'>
+              <!--Users will be added here-->
+            </div>
         </div>
-
+          
+        <button id='myButton' type='button' class='btn btn-primary'>Get Users</button>
+        
+        <script>
+            //Loop through the users and add them to bootstrap card
+            $(document).ready(function() {
+                $("#myButton").click(function() {
+                    $.ajax({
+                        url: "https://reqres.in/api/users/",
+                        type: "GET",
+                        success: function(response) {
+                            var html = '';
+                            $.each(response.data, function(index, user) {
+                                html += '<div class=\'col-md-2\'><div class=\'card\'><img src=\'' + user.avatar + '\' alt=\'Avatar\'><h4>' + user.first_name + " " + user.last_name + '</h4><a href="">' + user.email + '</a><br></div></div>';
+                            });
+                            $('#users .row').html(html);
+                        }
+                    });
+                });
+            });
+        </script>
+                
         <!-- Footer -->
         <footer class="bg-primary text-center text-white fixed-bottom">
           
@@ -83,7 +94,7 @@
                     <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Ymedrassi/G5" role="button"><i class="fab fa-github"></i></a>
                 </section>
             </div>
-            
+          
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2020 Copyright:
