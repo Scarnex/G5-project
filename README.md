@@ -16,3 +16,13 @@ open the `index.html` on any browser
 
 # Functional search bar
 - Use the search bar to search between any of the following: "home", "about", "contact, "users", or "mobiles".
+
+# Introducing Flask with app.py and 404.html
+Pre-requisite:
+- download the virtual environment by typing "python -m venv env" in the terminal.
+- download flask by typing "pip install flask" in the terminal.
+- Hit "run" on app.py
+
+- all pages are requested by flask and applied together.
+- 404 page added if user enters the wrong URL.
+- about.html will fetch json data from postdata.py with the help of flask.

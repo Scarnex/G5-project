@@ -59,8 +59,28 @@
             </nav>
         </header>
         
-        <div style="height: 300px;"></div>
-    
+        <button id = "myButton" onclick = "clicknow()">Show Users</button>
+        <div id="feedback">No Feedback</div>
+
+        <script>
+            function clicknow() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/json_posts',
+                }).done(function(response) {
+                    response = JSON.parse(response);
+                    console.log(response);
+        
+                    var myhtml = `
+                        <h3>${response.data[0].title}
+                            <small>by ${response.data[0].author}</small>
+                        </h3>
+                        <p>${response.data[0].content}</p>`;
+                    $("#feedback").html(myhtml);
+                });
+            }
+        </script>
+        
         <!-- Footer -->
         <footer class="bg-primary text-center text-white fixed-bottom">
           
