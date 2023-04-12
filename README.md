@@ -13,3 +13,6 @@ open the `index.html` on any browser
 - implemented a white colored text on the navigation link in every page that the user is currently on.
 - Reqres data will now display the users in cards with their respective emails.
 - mobiles.html data are stored inside a container and styled.
+
+# Functional search bar
+- Use the search bar to search between any of the following: "home", "about", "contact, "users", or "mobiles".

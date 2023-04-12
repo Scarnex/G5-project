@@ -48,6 +48,12 @@
                                 <a class="nav-link" href="mobiles.html"><i class="fa-sharp fa-solid fa-mobile"></i> Mobiles</a>
                             </li>
                         </ul>    
+                        
+                        <!--Search bar-->
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </nav>
@@ -122,6 +128,27 @@
               <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
           </div>
         </footer>
-      </body>
-    
+
+        <script>
+            //Search bar functionality
+            const pages = {
+                home: 'index.html',
+                about: 'about.html',
+                contact: 'contact.html',
+                users: 'reqres-data.html',
+                mobiles: 'mobiles.html'
+            };
+
+            const searchInput = document.querySelector('.form-control');
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const searchTerm = searchInput.value.toLowerCase();
+                if (pages[searchTerm]) {
+                    window.location.href = pages[searchTerm];
+                }
+            });
+        </script>
+    </body>
 </html>
