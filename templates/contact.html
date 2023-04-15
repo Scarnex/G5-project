@@ -152,3 +152,29 @@
         </script>
     </body>
 </html>
+
+
+from flask import Flask, render_template, request
+from flask_mail import Mail, Message
+
+app = Flask(__name__)
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'your-email@gmail.com'
+app.config['MAIL_PASSWORD'] = 'your-email-password'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
+
+@app.route('/contact-us', methods=['POST'])
+def contact_us():
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+    msg = Message('New Contact Us Submission', sender='your-email@gmail.com', recipients=['recipient-email@gmail.com'])
+    msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+    mail.send(msg)
+    return 'Message sent!'
+
+if __name__ == '__main__':
+   app.run()
