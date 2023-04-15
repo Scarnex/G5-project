@@ -1,1 +1,32 @@
+postsdata.py:
 
+posts = [
+    {'id': 1, 'title': 'Blog Post 1', 'content': 'Http://mywebsite.com/posts'},
+    {'id': 2, 'title': 'Blog Post 2', 'content': 'Http://mywebsite.com/posts'},
+    {'id': 3, 'title': 'Blog Post 3', 'content': 'Http://mywebsite.com/posts'}
+]
+
+
+app.py:
+
+from flask import Flask, render_template
+import postsdata
+
+app = Flask(__name__)
+
+@app.route('/posts')
+def show_posts():
+    return render_template('posts.html', posts=postsdata.posts)
+
+if __name__ == '__main__':
+    app.run()
+
+
+posts.html:
+
+{% for post in posts %}
+    <div class="post">
+        <h2>{{ post['title'] }}</h2>
+        <p>{{ post['content'] }}</p>
+    </div>
+{% endfor %}
