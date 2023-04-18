@@ -26,3 +26,9 @@ Pre-requisite:
 - all pages are requested by flask and applied together.
 - 404 page added if user enters the wrong URL.
 - about.html will fetch json data from postdata.py with the help of flask.
+
+# Functional Flask email in contact
+- Make sure you have 2fa on your gmail account and insert your gmail in app.py with an app password that you get from this link: https://myaccount.google.com/apppasswords?rapt=AEjHL4MqsPJzvO0QMvFpbYvW0WkUJ3b2WcZ4u-QVRczvAbTKIKPi2unH4dPwhx4YhPnpD9hXC26G_4Yh5H-khRpKYCvT_xR24A
+- Select app = "Mail".
+- Select device = whichever device you're using.
+- Don't forget to remove your email and password before committing.

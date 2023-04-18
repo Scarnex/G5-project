@@ -12,10 +12,36 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route("/contact")
-@app.route("/contact.html")
+from flask import request
+from flask_mail import Mail, Message
+
+# Set up email server configurations
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'your-email@gmail.com' # insert your gmail 
+app.config['MAIL_PASSWORD'] = 'your-email-password' # insert your password
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
+# Create a Flask route for the contact page
+@app.route("/contact.html", methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
+    if request.method == 'POST':
+        # Retrieve the submitted form data for name, email, and message
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        
+        # Create and send the email message
+        msg = Message('New contact submission', sender='your-email@gmail.com', 
+                      recipients=['recipient-email@gmail.com'])
+        msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+        mail.send(msg)
+        return render_template('contact.html', sent=True)
+    else:
+        return render_template('contact.html')
 
 @app.route("/users")
 @app.route("/reqres-data.html")

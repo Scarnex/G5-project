@@ -66,41 +66,39 @@
             <div class="d-flex justify-content-center">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="well well-sm">
-                        <form class="form-horizontal" method="post">
-                            <fieldset>
-                                <legend class="text-center">Contact us</legend>
-                                <hr>
-                                <!-- Name input-->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">Name</label>
-                                    <div class="col-md-15">
-                                        <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
-                                    </div>
+                        <form method="POST" action="{{ url_for('contact') }}">
+                            <legend class="text-center">Contact us</legend>
+                            <hr>
+                            <!-- Name input -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">Name</label>
+                                <div class="col-md-15">
+                                    <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
                                 </div>
-                        
-                                <!-- Email input-->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="email">Your E-mail</label>
-                                    <div class="col-md-15">
-                                        <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-                                    </div>
+                            </div>
+
+                            <!-- Email input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="email">Your E-mail</label>
+                                <div class="col-md-15">
+                                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
                                 </div>
-                        
-                                <!-- Message body -->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="message">Your message</label>
-                                    <div class="col-md-15">
-                                        <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
-                                    </div>
+                            </div>
+                            
+                            <!-- Message body -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="message">Your message</label>
+                                <div class="col-md-15">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
                                 </div>
-                                <hr>
-                                <!-- Form actions -->
-                                <div class="form-group">
-                                    <div class="col-md-12 text-right">
-                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                    </div>
+                            </div>
+                            <hr>
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                                 </div>
-                            </fieldset>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -152,29 +150,3 @@
         </script>
     </body>
 </html>
-
-
-from flask import Flask, render_template, request
-from flask_mail import Mail, Message
-
-app = Flask(__name__)
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'your-email@gmail.com'
-app.config['MAIL_PASSWORD'] = 'your-email-password'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-mail = Mail(app)
-
-@app.route('/contact-us', methods=['POST'])
-def contact_us():
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
-    msg = Message('New Contact Us Submission', sender='your-email@gmail.com', recipients=['recipient-email@gmail.com'])
-    msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-    mail.send(msg)
-    return 'Message sent!'
-
-if __name__ == '__main__':
-   app.run()
