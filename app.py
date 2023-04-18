@@ -55,10 +55,14 @@ def mobiles():
 
 from postdata import posts
 
-@app.route("/post/int:post_id>")
-def post(post_id):
-    post = posts[post_id]
-    return render_template('post.html', title = post['title'], p = post)
+@app.route("/post/<int:post_id>")
+def single_post(post_id):
+    post = posts[post_id - 1]  # Retrieve the post from the 'posts' list based on the URL
+    return render_template('single-post.html', post=post)
+
+@app.route("/post")
+def all_post():
+    return render_template('all-post.html', posts=posts)
 
 from json import dumps
 

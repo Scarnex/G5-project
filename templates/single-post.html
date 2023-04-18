@@ -1,11 +1,19 @@
-from flask import Flask, render_template
-app = Flask(__name__)
+<!DOCTYPE html>
+<html lang="en">
 
-@app.route('/posts/<int:post_id>')
-def show_post(post_id):
-    # Here, you would query your database to get the post with the given ID
-    post = {'id': 3, 'title': 'Blog Post 3', 'content': 'http://mywebsite.com/posts/3'}
-    return render_template('single-post.html', post=post)
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Post</title>
+</head>
 
-if __name__ == '__main__':
-    app.run()
+<body>
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p>Posted by {{ post.author }} on {{ post.date_posted }}</p>
+    </div>
+</body>
+
+</html>
