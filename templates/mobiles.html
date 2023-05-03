@@ -60,19 +60,36 @@
             </nav>
         </header>
 
-        <div class="mobileContainer">
-            <script>
-                //loop through the mobile dictionary from mobile-data.js
-                for (var i = 0; i < mobiles.length; i++) {
-                    console.log(mobiles[i].title);
-                    console.log(mobiles[i].desc);
-                    console.log(mobiles[i].price);
-                    
-                    document.write("<h2>" + mobiles[i].title + "</h2>" + "<br>");
-                    document.write(mobiles[i].desc + "<br>");
-                    document.write("<b>" + mobiles[i].price + "</b>" + "<br><br>");
-                }
-            </script>
+        <div style="height: 50px;"></div>
+
+        <div class="container">
+            <table class="table table-striped table-bordered table-hover table-info">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <script>
+                        //loop through the mobile dictionary from mobile-data.js
+                        for (var i = 0; i < mobiles.length; i++) {
+                            console.log(mobiles[i].title);
+                            console.log(mobiles[i].desc);
+                            console.log(mobiles[i].price);
+
+                            document.write(
+                            '<tr>' +
+                                '<td>' + mobiles[i].title + '</td>' +
+                                '<td>' + mobiles[i].desc + '</td>' +
+                                '<td>' + mobiles[i].price + '</td>' +
+                            '</tr>'
+                            );
+                        }
+                    </script>
+                </tbody>
+            </table>
         </div>
 
         <!-- Footer -->
