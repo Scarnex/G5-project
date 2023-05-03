@@ -5,15 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--JQuery-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <!--Font Awesome-->
+    <link href="../static/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
+
     <title>All Posts</title>
 </head>
 
 <body>
     {% for post in posts %}
-        <div class="post">
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.content }}</p>
-            <p>Posted by {{ post.author }} on {{ post.date_posted }}</p>
+        <div class="container">
+            <div class="alert alert-primary" role="alert">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <p>Posted by {{ post.author }} on {{ post.date_posted }}</p>
+            </div>
         </div>
     {% endfor %}
 </body>
