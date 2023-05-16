@@ -1,2 +1,5 @@
+# .gitignore
+# ignored folders and files
 
-evn
+__pycache__
+env
