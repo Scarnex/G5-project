@@ -18,8 +18,8 @@ from flask_mail import Mail, Message
 # Set up email server configurations
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'your-email@gmail.com' # insert your gmail 
-app.config['MAIL_PASSWORD'] = 'your-email-password' # insert your password
+app.config['MAIL_USERNAME'] = 'medrassi35@gmail.com' # insert your gmail 
+app.config['MAIL_PASSWORD'] = 'ktpusuxdcmszgvwq' # insert your password
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
@@ -35,8 +35,8 @@ def contact():
         message = request.form.get('message')
         
         # Create and send the email message
-        msg = Message('New contact submission', sender='your-email@gmail.com', 
-                      recipients=['recipient-email@gmail.com'])
+        msg = Message('Test', sender='medrassi35@gmail.com', 
+                      recipients=['medrassi35@gmail.com'])
         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
         mail.send(msg)
         return render_template('contact.html', sent=True)
